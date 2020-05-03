@@ -15,7 +15,7 @@ const CHAT_CHANNEL = "CHAT_CHANNEL";
 @Resolver((of) => Chat)
 export default class ChatResolver {
   @Query((returns) => [Chat])
-  getChats() {
+  chats() {
     return chats;
   }
 
