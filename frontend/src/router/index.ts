@@ -1,14 +1,14 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-import ChatList from "../components/ChatList.vue";
+import ChatView from "../views/ChatView.vue";
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
     path: "/",
-    name: "Home",
-    component: ChatList,
+    name: "Chat",
+    component: ChatView,
   },
   // {
   //   path: "/about",

@@ -12,21 +12,34 @@
 import { Component, Model, Vue } from "vue-property-decorator";
 import gql from "graphql-tag";
 import ChatModel from "../model/chat";
-import { QUERY_CHATS } from "../graphql/chat.graphql";
+import {
+  QUERY_CHATS,
+  MESSAGE_SENT_SUBSCRIPTION,
+} from "../graphql/chat.graphql";
 
 @Component({
   apollo: {
-    chats() {
-      return {
-        query: QUERY_CHATS,
-        result(result: any) {
-          console.log(result);
+    chats: {
+      query: QUERY_CHATS,
+      subscribeToMore: {
+        document: MESSAGE_SENT_SUBSCRIPTION,
+        updateQuery: (previousResult, { subscriptionData }) => {
+          console.log(previousResult, subscriptionData);
+          return {
+            chats: [...previousResult.chats, subscriptionData.data.messageSent],
+          };
         },
-      };
+      },
     },
   },
 })
 export default class ChatList extends Vue {
   chats: ChatModel[] = [];
+
+  async subscribeToChats() {
+    this.$apollo.subscribe({
+      query: MESSAGE_SENT_SUBSCRIPTION,
+    });
+  }
 }
 </script>
