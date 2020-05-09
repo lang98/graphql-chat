@@ -14,7 +14,7 @@ import gql from "graphql-tag";
 import ChatModel from "../model/chat";
 import {
   QUERY_CHATS,
-  MESSAGE_SENT_SUBSCRIPTION,
+  MESSAGE_SENT_SUBSCRIPTION
 } from "../graphql/chat.graphql";
 
 @Component({
@@ -24,21 +24,20 @@ import {
       subscribeToMore: {
         document: MESSAGE_SENT_SUBSCRIPTION,
         updateQuery: (previousResult, { subscriptionData }) => {
-          console.log(previousResult, subscriptionData);
           return {
-            chats: [...previousResult.chats, subscriptionData.data.messageSent],
+            chats: [...previousResult.chats, subscriptionData.data.messageSent]
           };
-        },
-      },
-    },
-  },
+        }
+      }
+    }
+  }
 })
 export default class ChatList extends Vue {
   chats: ChatModel[] = [];
 
   async subscribeToChats() {
     this.$apollo.subscribe({
-      query: MESSAGE_SENT_SUBSCRIPTION,
+      query: MESSAGE_SENT_SUBSCRIPTION
     });
   }
 }
