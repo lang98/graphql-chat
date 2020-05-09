@@ -1,8 +1,10 @@
 <template>
-  <div>
-    <h2>MyChat</h2>
-    <ChatList />
-    <ChatInputBox />
+  <div class="container">
+    <div class="chat-view-container">
+      <h2>VueChat</h2>
+      <ChatList />
+      <ChatInputBox />
+    </div>
   </div>
 </template>
 
@@ -14,8 +16,17 @@ import ChatInputBox from "../components/ChatInputBox.vue";
 @Component({
   components: {
     ChatList,
-    ChatInputBox,
-  },
+    ChatInputBox
+  }
 })
 export default class ChatView extends Vue {}
 </script>
+
+<style scoped>
+.container {
+  align-content: center;
+}
+.chat-view-container {
+  max-width: 500px;
+}
+</style>

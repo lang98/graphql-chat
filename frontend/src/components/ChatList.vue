@@ -2,8 +2,7 @@
   <div class="chat-list">
     <h2>This is your chats</h2>
     <b-list-group v-for="(chat, id) in chats" :key="id">
-      <b-list-group-item>{{ chat.from }}</b-list-group-item>
-      <b-list-group-item>{{ chat.message }}</b-list-group-item>
+      <ChatBubble :message="chat.message" :isSelf="chat.from == 'ME'" />
     </b-list-group>
   </div>
 </template>
@@ -12,6 +11,7 @@
 import { Component, Model, Vue } from "vue-property-decorator";
 import gql from "graphql-tag";
 import ChatModel from "../model/chat";
+import ChatBubble from "./ChatBubble.vue";
 import {
   QUERY_CHATS,
   MESSAGE_SENT_SUBSCRIPTION
@@ -30,9 +30,18 @@ import {
         }
       }
     }
+  },
+  components: {
+    ChatBubble
   }
 })
 export default class ChatList extends Vue {
   chats: ChatModel[] = [];
 }
 </script>
+
+<style scoped>
+.chat-list {
+  max-width: 200;
+}
+</style>

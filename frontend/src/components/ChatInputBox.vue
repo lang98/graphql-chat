@@ -3,9 +3,7 @@
     <b-input-group>
       <b-form-input v-model="message" placeholder="What do you wanna say..." />
       <b-input-group-append>
-        <b-button variant="outline-secondary" @click="sendMessage"
-          >SEND</b-button
-        >
+        <b-button variant="outline-secondary" @click="sendMessage">SEND</b-button>
       </b-input-group-append>
     </b-input-group>
   </div>
@@ -25,9 +23,9 @@ export default class ChatList extends Vue {
     await this.$apollo.mutate({
       mutation: SEND_MESSAGE_MUTATION,
       variables: {
-        from: "Userrr",
-        message: this.message,
-      },
+        from: "ME",
+        message: this.message
+      }
     });
   }
 }
