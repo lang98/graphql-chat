@@ -34,11 +34,5 @@ import {
 })
 export default class ChatList extends Vue {
   chats: ChatModel[] = [];
-
-  async subscribeToChats() {
-    this.$apollo.subscribe({
-      query: MESSAGE_SENT_SUBSCRIPTION
-    });
-  }
 }
 </script>
