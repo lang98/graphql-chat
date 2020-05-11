@@ -42,6 +42,6 @@ export default class ChatList extends Vue {
 
 <style scoped>
 .chat-list {
-  max-width: 200;
+  margin-bottom: auto;
 }
 </style>

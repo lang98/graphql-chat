@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="chat-input-box">
     <b-input-group>
       <b-form-input v-model="message" placeholder="What do you wanna say..." />
       <b-input-group-append>
@@ -20,13 +20,22 @@ export default class ChatList extends Vue {
   message = "";
 
   async sendMessage() {
-    await this.$apollo.mutate({
-      mutation: SEND_MESSAGE_MUTATION,
-      variables: {
-        from: "ME",
-        message: this.message
-      }
-    });
+    if (this.message) {
+      await this.$apollo.mutate({
+        mutation: SEND_MESSAGE_MUTATION,
+        variables: {
+          from: "ME",
+          message: this.message
+        }
+      });
+    }
+    this.message = "";
   }
 }
 </script>
+
+<style scoped>
+.chat-input-box {
+  margin-top: auto;
+}
+</style>

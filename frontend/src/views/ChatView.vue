@@ -24,9 +24,15 @@ export default class ChatView extends Vue {}
 
 <style scoped>
 .container {
-  align-content: center;
+  display: flex;
+  justify-content: center;
 }
 .chat-view-container {
-  max-width: 500px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 90vh;
+  /* width: 500px; */
 }
 </style>
