@@ -11,7 +11,7 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "class-validator": "^0.12.2",
+    "class-validator": "^0.14.0",
     "graphql": "^15.0.0",
     "graphql-yoga": "^1.18.3",
     "reflect-metadata": "^0.1.13",
